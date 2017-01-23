@@ -1,5 +1,5 @@
 {
-  "name": "package_template",
+  "name": "unity-package-template",
   "version": "1.0.0",
   "description": "Package template for Unity uses npm.",
   "main": "index.js",
