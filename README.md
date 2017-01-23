@@ -9,5 +9,6 @@ Please check [here](https://github.com/shadowmint/unity-package-template/blob/ma
 # License
 
 Copyright (c) 2017 Tetsuya Mori
+
 Released under the [MIT license](http://opensource.org/licenses/mit-license.php)
 
