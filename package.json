@@ -13,6 +13,7 @@
     "type": "git",
     "url": "git@gitlab.kidsstar.co.jp:kidsstar/KSUDK_PackageTemplate.git"
   },
+  "private": true,
   "author": "Tetsuya Mori",
   "license": "MIT"
 }
