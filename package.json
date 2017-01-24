@@ -2,18 +2,25 @@
   "name": "unity-package-template",
   "version": "1.0.0",
   "description": "Package template for Unity uses npm.",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
+  "homepage":  "https://repository.kidsstar.co.jp/unity-packages/_template",
+  "bugs": {
+    "url": "https://repository.kidsstar.co.jp/unity-packages/_template/issues"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "node scripts/postinstall.js"
   },
+  "author": {
+    "name": "Tetsuya Mori",
+    "email": "tetsuya.mori@kidsstar.co.jp",
+    "url": "https://www.kidsstar.co.jp"
+  },
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@gitlab.kidsstar.co.jp:kidsstar/KSUDK_PackageTemplate.git"
+    "url": "git@gitlab.kidsstar.co.jp:unity-package/_template.git"
   },
-  "private": true,
-  "author": "Tetsuya Mori",
-  "license": "MIT"
+  "dependencies": {
+    "ncp": "^2.0.0",
+    "mkdirp": "^0.5.1"
+  }
 }
