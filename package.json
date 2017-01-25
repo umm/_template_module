@@ -2,9 +2,9 @@
   "name": "unity-package-template",
   "version": "1.0.0",
   "description": "Package template for Unity uses npm.",
-  "homepage":  "https://repository.kidsstar.co.jp/unity-packages/_template",
+  "homepage":  "https://git.kidsstar.co.jp/unity-packages/_template",
   "bugs": {
-    "url": "https://repository.kidsstar.co.jp/unity-packages/_template/issues"
+    "url": "https://git.kidsstar.co.jp/unity-packages/_template/issues"
   },
   "scripts": {
     "prepublish": "node scripts/prepublish.js",
@@ -18,7 +18,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@repository.kidsstar.co.jp:unity-package/_template.git"
+    "url": "git@git.kidsstar.co.jp:unity-package/_template.git"
   },
   "dependencies": {
     "ncp": "^2.0.0",
