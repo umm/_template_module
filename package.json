@@ -7,6 +7,7 @@
     "url": "https://repository.kidsstar.co.jp/unity-packages/_template/issues"
   },
   "scripts": {
+    "prepublish": "node scripts/prepublish.js",
     "postinstall": "node scripts/postinstall.js"
   },
   "author": {
