@@ -48,9 +48,19 @@ fs.readFile('package.json', { 'encoding': 'utf8' }, function(err, data) {
 
   var package_json = JSON.parse(data);
 
+  // Exit: If failure to parse 'package.json'
+  if (!package_json) {
+    console.error("Failure to parse 'package.json'");
+    process.exit(1);
+  }
+  // Exit: If 'name' node does not changed from 'unity-package-template'
+  if ('unity-package-template' == package_json.name) {
+    console.error("You must change 'name' node in 'package.json'");
+    process.exit(1);
+  }
   // Exit: If 'files' node does not exists or empty
-  if (!package_json || !package_json.files || 0 == package_json.files.length) {
-    console.error('Could not found file / directory list in "package.json"');
+  if (!package_json.files || 0 == package_json.files.length) {
+    console.error("'files' node does not exists or empty in 'package.json'");
     process.exit(1);
   }
 
@@ -60,7 +70,7 @@ fs.readFile('package.json', { 'encoding': 'utf8' }, function(err, data) {
     var dst = path.join(dst_base, file);
     // Exit: If source file does not exists
     if (!isExists(src)) {
-      console.error('Source file / directory could not found: ["' + src + '"]');
+      console.error("Source file does not found: ['" + src + "']");
       process.exit(1);
     }
 
@@ -68,6 +78,7 @@ fs.readFile('package.json', { 'encoding': 'utf8' }, function(err, data) {
     // Create directory if needed
     if (isDirectory(src) && !isExists(dst)) {
       mkdirp(dst, function(err) {
+        // Exit: If failure to create directory
         if (err) {
           console.error(err);
           process.exit(1);
