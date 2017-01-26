@@ -36,9 +36,19 @@ var f_read_input = function(message, original, required) {
 
 var f_configure = function(shortly) {
   v.package_name = f_read_input('What is package name?', v.package_name, true);
+  if (!/^unity-package-/.test(v.package_name)) {
+    v.package_name = 'unity-package-' + v.package_name;
+  }
   v.description = f_read_input('Please input description if needed.', v.description, false);
   if (!shortly) {
     v.repository.type = f_read_input('What is repository type?', v.repository.type, true);
+  }
+  v.repository.name = v.package_name;
+  if (/^unity-package-/.test(v.repository.name)) {
+    v.repository.name = v.repository.name.replace(/^unity-package-/, '');
+  }
+  if ('git' == v.repository.type && !/.git$/.test(v.repository.name)) {
+    v.repository.name = v.repository.name + '.git';
   }
   v.repository.name = f_read_input('What is repository name?', v.repository.name || v.package_name, true);
   if (!shortly) {
@@ -49,9 +59,6 @@ var f_configure = function(shortly) {
     v.author.email = f_read_input('What is author email?', v.author.email, false);
     v.author.url = f_read_input('What is author url?', v.author.url, false);
     v.license = f_read_input('What is package license?', v.license, true);
-  }
-  if ('git' == v.repository.type && !/.git$/.test(v.repository.name)) {
-    v.repository.name = v.repository.name + '.git';
   }
 
   var data = fs.readFileSync('package.json', { encoding: 'utf8' });
