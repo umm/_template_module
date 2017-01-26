@@ -8,7 +8,7 @@
   },
   "scripts": {
     "initpackage": "node scripts/initpackage.js",
-    "prepublish": "node scripts/prepublish.js",
+    "prepublish": "in-publish && node scripts/prepublish.js || no-in-publish",
     "postinstall": "node scripts/postinstall.js"
   },
   "author": {
@@ -24,6 +24,7 @@
   "files": [
   ],
   "dependencies": {
+    "in-publish": "^2.0.0",
     "readline-sync": "^1.4.5",
     "ncp": "^2.0.0",
     "mkdirp": "^0.5.1",
