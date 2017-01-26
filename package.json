@@ -20,6 +20,8 @@
     "type": "git",
     "url": "git@git.kidsstar.co.jp:unity-package/_template.git"
   },
+  "files": [
+  ],
   "dependencies": {
     "ncp": "^2.0.0",
     "mkdirp": "^0.5.1"
