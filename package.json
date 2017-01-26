@@ -1,29 +1,32 @@
 {
-  "name": "unity-package-template",
+  "name": "__PACKAGE_NAME__",
   "version": "1.0.0",
-  "description": "",
-  "homepage":  "https://git.kidsstar.co.jp/unity-packages/<PackageName>",
+  "description": "__DESCRIPTION__",
+  "homepage":  "https://__REPOSITORY_HOST__/__REPOSITORY_USER__/__REPOSITORY_NAME__",
   "bugs": {
-    "url": "https://git.kidsstar.co.jp/unity-packages/<PackageName>/issues"
+    "url": "https://__REPOSITORY_HOST__/__REPOSITORY_USER__/__REPOSITORY_NAME__/issues"
   },
   "scripts": {
+    "initpackage": "node scripts/initpackage.js",
     "prepublish": "node scripts/prepublish.js",
     "postinstall": "node scripts/postinstall.js"
   },
   "author": {
-    "name": "Tetsuya Mori",
-    "email": "tetsuya.mori@kidsstar.co.jp",
-    "url": "https://www.kidsstar.co.jp"
+    "name": "__AUTHOR_NAME__",
+    "email": "__AUTHOR_EMAIL__",
+    "url": "__AUTHOR_URL__"
   },
-  "license": "MIT",
+  "license": "__LICENSE__",
   "repository": {
-    "type": "git",
-    "url": "git@git.kidsstar.co.jp:unity-package/<PackageName>.git"
+    "type": "__REPOSITORY_TYPE__",
+    "url": "__REPOSITORY_USER__@__REPOSITORY_HOST__:__REPOSITORY_GROUP__/__REPOSITORY_NAME__"
   },
   "files": [
   ],
   "dependencies": {
+    "readline-sync": "^1.4.5",
     "ncp": "^2.0.0",
-    "mkdirp": "^0.5.1"
+    "mkdirp": "^0.5.1",
+    "rmdir": "^1.2.0"
   }
 }
