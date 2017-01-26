@@ -8,7 +8,7 @@
   },
   "scripts": {
     "initpackage": "node scripts/initpackage.js",
-    "prepublish": "in-publish && node scripts/prepublish.js || no-in-publish",
+    "prepublish": "in-publish && node scripts/prepublish.js || not-in-publish",
     "postinstall": "node scripts/postinstall.js"
   },
   "author": {
