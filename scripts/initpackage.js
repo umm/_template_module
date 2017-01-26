@@ -1,6 +1,4 @@
 var path = require('path');
-var ncp = require('ncp');
-var mkdirp = require('mkdirp');
 var rmdir = require('rmdir');
 var fs = require('fs');
 var readlineSync = require('readline-sync');
