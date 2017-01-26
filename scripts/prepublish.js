@@ -66,7 +66,7 @@ fs.readFile('package.json', { 'encoding': 'utf8' }, function(err, data) {
 
   // Each 'files' node entry
   package_json.files.forEach(function(file) {
-    if ('scripts' == file) {
+    if (/^(scripts|src)$/.test(file)) {
       return;
     }
     var src = path.join(src_base, file);
