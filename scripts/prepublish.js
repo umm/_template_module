@@ -54,7 +54,7 @@ fs.readFile('package.json', { 'encoding': 'utf8' }, function(err, data) {
     process.exit(1);
   }
   // Exit: If 'name' node does not changed from 'unity-package-template'
-  if ('unity-package-template' == package_json.name) {
+  if ('__PACKAGE_NAME__' == package_json.name) {
     console.error("You must change 'name' node in 'package.json'");
     process.exit(1);
   }
