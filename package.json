@@ -22,6 +22,7 @@
     "url": "__REPOSITORY_USER__@__REPOSITORY_HOST__:__REPOSITORY_GROUP__/__REPOSITORY_NAME__"
   },
   "files": [
+    "scripts"
   ],
   "dependencies": {
     "in-publish": "^2.0.0",
