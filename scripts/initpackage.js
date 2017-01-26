@@ -97,8 +97,24 @@ var f_write_package_json = function() {
 
     fs.writeFile('package.json', data, { encoding: 'utf8' }, function() {
       console.log('Finish wrote `package.json\'.');
+      f_change_remote_repository();
     });
   });
+};
+
+var f_change_remote_repository = function() {
+  if ('git' == v.repository.type) {
+    rmdir('.git', function() {
+      console.log("Finish remove original '.git/' directory.");
+      require('child_process').exec('git init && git add . && git commit -m "Initial commit" && git remote add origin ' + v.repository.user + '@' + v.repository.host + ':' + v.repository.group + '/' + v.repository.name, function(err, stdout, stderr) {
+        if (err) {
+          console.error(err);
+          process.exit(1);
+        }
+        console.log("Finish reset repository.");
+      });
+    });
+  }
 };
 
 f_configure(true);
