@@ -54,39 +54,43 @@ var f_configure = function(shortly) {
     v.repository.name = v.repository.name + '.git';
   }
 
-  f_write_package_json(true);
+  var data = fs.readFileSync('package.json', { encoding: 'utf8' });
+  console.log(f_replace_placeholder(data));
+
   if (readlineSync.question('\nOK? ', { trueValue: [ 'y', 'yes', 'ok' ], falseValue: [ 'n', 'no', 'ng' ], caseSensitive: false })) {
-    f_write_package_json(false);
+    f_write_package_json();
   } else {
     f_configure(false);
   }
 };
 
-var f_write_package_json = function(dry_run) {
+var f_replace_placeholder = function(data) {
+  data = data.replace(/__PACKAGE_NAME__/g, v.package_name);
+  data = data.replace(/__DESCRIPTION__/g, v.description);
+  data = data.replace(/__REPOSITORY_NAME__/g, v.repository.name);
+  data = data.replace(/__REPOSITORY_TYPE__/g, v.repository.type);
+  data = data.replace(/__REPOSITORY_HOST__/g, v.repository.host);
+  data = data.replace(/__REPOSITORY_GROUP__/g, v.repository.group);
+  data = data.replace(/__REPOSITORY_USER__/g, v.repository.user);
+  data = data.replace(/__AUTHOR_NAME__/g, v.author.name);
+  data = data.replace(/__AUTHOR_EMAIL__/g, v.author.email);
+  data = data.replace(/__AUTHOR_URL__/g, v.author.url);
+  data = data.replace(/__LICENSE__/g, v.license);
+  return data;
+};
+
+var f_write_package_json = function() {
   fs.readFile('package.json', { encoding: 'utf8' }, function(err, data) {
     if (err) {
       console.error(err);
       process.exit(1);
     }
 
-    data = data.replace(/__PACKAGE_NAME__/g, v.package_name);
-    data = data.replace(/__REPOSITORY_NAME__/g, v.repository.name);
-    data = data.replace(/__REPOSITORY_TYPE__/g, v.repository.type);
-    data = data.replace(/__REPOSITORY_HOST__/g, v.repository.host);
-    data = data.replace(/__REPOSITORY_GROUP__/g, v.repository.group);
-    data = data.replace(/__REPOSITORY_USER__/g, v.repository.user);
-    data = data.replace(/__AUTHOR_NAME__/g, v.author.name);
-    data = data.replace(/__AUTHOR_EMAIL__/g, v.author.email);
-    data = data.replace(/__AUTHOR_URL__/g, v.author.url);
-    data = data.replace(/__LICENSE__/g, v.license);
+    data = f_replace_placeholder(data);
 
-    if (dry_run) {
-      console.log(data);
-    } else {
-      fs.writeFile('package.json', data, { encoding: 'utf8' }, function() {
-        console.log('Finish wrote `package.json\'.');
-      });
-    }
+    fs.writeFile('package.json', data, { encoding: 'utf8' }, function() {
+      console.log('Finish wrote `package.json\'.');
+    });
   });
 };
 

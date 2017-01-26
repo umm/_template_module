@@ -2,9 +2,9 @@
   "name": "__PACKAGE_NAME__",
   "version": "1.0.0",
   "description": "__DESCRIPTION__",
-  "homepage":  "https://__REPOSITORY_HOST__/__REPOSITORY_USER__/__REPOSITORY_NAME__",
+  "homepage":  "https://__REPOSITORY_HOST__/__REPOSITORY_GROUP__/__REPOSITORY_NAME__",
   "bugs": {
-    "url": "https://__REPOSITORY_HOST__/__REPOSITORY_USER__/__REPOSITORY_NAME__/issues"
+    "url": "https://__REPOSITORY_HOST__/__REPOSITORY_GROUP__/__REPOSITORY_NAME__/issues"
   },
   "scripts": {
     "initpackage": "node scripts/initpackage.js",
