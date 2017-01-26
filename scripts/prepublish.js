@@ -86,6 +86,16 @@ fs.readFile('package.json', { 'encoding': 'utf8' }, function(err, data) {
 
         copyFile(src, dst);
       });
+    } else if (!isExists(path.dirname(dst))) {
+      mkdirp(path.dirname(dst), function(err) {
+        // Exit: If failure to create parent directory
+        if (err) {
+          console.error(err);
+          process.exit(1);
+        }
+
+        copyFile(src, dst);
+      });
     } else {
       copyFile(src, dst);
     }
