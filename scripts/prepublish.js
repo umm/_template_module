@@ -1,14 +1,14 @@
-var path = require('path');
-var ncp = require('ncp');
-var mkdirp = require('mkdirp');
-var fs = require('fs');
+import path from 'path';
+import ncp from 'ncp';
+import mkdirp from 'mkdirp';
+import fs from 'fs';
 
 // Paths
-var src_base = path.join(__dirname, '..', '..', '..', 'Assets', 'Packages');
-var dst_base = path.join(__dirname, '..', 'src');
+let src_base = path.join(__dirname, '..', '..', '..', 'Assets', 'Packages');
+let dst_base = path.join(__dirname, '..', 'src');
 
 // Function: Check file or directory exists
-var isExists = function(path) {
+let isExists = (path) => {
   try {
     fs.statSync(path);
     return true;
@@ -19,7 +19,7 @@ var isExists = function(path) {
 };
 
 // Function: Check path is directory or not
-var isDirectory = function(path) {
+let isDirectory = (path) => {
   try {
     return fs.statSync(path).isDirectory();
   } catch (err) {
@@ -29,8 +29,8 @@ var isDirectory = function(path) {
 };
 
 // Function: Copy files recursive
-var copyFile = function(path_src, path_dst) {
-  ncp(path_src, path_dst, function(err) {
+let copyFile = (path_src, path_dst) => {
+  ncp(path_src, path_dst, (err) => {
     if (err) {
       console.error(err);
       process.exit(1);
@@ -39,14 +39,14 @@ var copyFile = function(path_src, path_dst) {
 };
 
 // Read 'package.json'
-fs.readFile('package.json', { 'encoding': 'utf8' }, function(err, data) {
+fs.readFile('package.json', { 'encoding': 'utf8' }, (err, data) => {
   // Exit: If occurs read error
   if (err) {
     console.error(err);
     process.exit(1);
   }
 
-  var package_json = JSON.parse(data);
+  let package_json = JSON.parse(data);
 
   // Exit: If failure to parse 'package.json'
   if (!package_json) {
@@ -65,7 +65,7 @@ fs.readFile('package.json', { 'encoding': 'utf8' }, function(err, data) {
   }
 
   // Each 'files' node entry
-  package_json.files.forEach(function(file) {
+  package_json.files.forEach((file) => {
     if (/^(scripts|src)$/.test(file)) {
       return;
     }
@@ -73,14 +73,14 @@ fs.readFile('package.json', { 'encoding': 'utf8' }, function(err, data) {
     var dst = path.join(dst_base, file);
     // Exit: If source file does not exists
     if (!isExists(src)) {
-      console.error("Source file does not found: ['" + src + "']");
+      console.error(`Source file does not found: [${src}]`);
       process.exit(1);
     }
 
     // Copy file
     // Create directory if needed
     if (isDirectory(src) && !isExists(dst)) {
-      mkdirp(dst, function(err) {
+      mkdirp(dst, (err) => {
         // Exit: If failure to create directory
         if (err) {
           console.error(err);
@@ -90,7 +90,7 @@ fs.readFile('package.json', { 'encoding': 'utf8' }, function(err, data) {
         copyFile(src, dst);
       });
     } else if (!isExists(path.dirname(dst))) {
-      mkdirp(path.dirname(dst), function(err) {
+      mkdirp(path.dirname(dst), (err) => {
         // Exit: If failure to create parent directory
         if (err) {
           console.error(err);

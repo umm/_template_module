@@ -1,20 +1,20 @@
-var mkdirp = require('mkdirp');
-var path = require('path');
-var ncp = require('ncp');
+import mkdirp from 'mkdirp';
+import path from 'path';
+import ncp from 'ncp';
 
 // Paths
-var src = path.join(__dirname, '..', 'src');
-var dir = path.join(__dirname, '..', '..', '..', 'Assets', 'Packages');
+let src = path.join(__dirname, '..', 'src');
+let dir = path.join(__dirname, '..', '..', '..', 'Assets', 'Packages');
 
 // Create folder if missing
-mkdirp(dir, function (err) {
+mkdirp(dir, (err) => {
   if (err) {
     console.error(err)
     process.exit(1);
   }
 
   // Copy files
-  ncp(src, dir, function (err) {
+  ncp(src, dir, (err) => {
     if (err) {
       console.error(err);
       process.exit(1);
