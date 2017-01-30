@@ -1,0 +1,15 @@
+{
+  "name": "tests",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-polyfill": "^6.22.0",
+    "babel-preset-latest": "^6.22.0",
+    "gulp": "^3.9.1",
+    "gulp-unity": "github:shadowmint/gulp-unity#1.0.0",
+    "run-sequence": "^1.2.2",
+    "xml2js": "^0.4.17"
+  }
+}
