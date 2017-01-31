@@ -1,14 +1,14 @@
-import path from 'path';
-import ncp from 'ncp';
-import mkdirp from 'mkdirp';
-import fs from 'fs';
+var path = require('path');
+var ncp = require('ncp');
+var mkdirp = require('mkdirp');
+var fs = require('fs');
 
 // Paths
-let src_base = path.join(__dirname, '..', 'test', 'Assets', 'Packages');
-let dst_base = path.join(__dirname, '..', 'src');
+var src_base = path.join(__dirname, '..', 'test', 'Assets', 'Packages');
+var dst_base = path.join(__dirname, '..', 'src');
 
 // Function: Check file or directory exists
-let isExists = (path) => {
+var isExists = function(path) {
   try {
     fs.statSync(path);
     return true;
@@ -19,7 +19,7 @@ let isExists = (path) => {
 };
 
 // Function: Check path is directory or not
-let isDirectory = (path) => {
+var isDirectory = function(path) {
   try {
     return fs.statSync(path).isDirectory();
   } catch (err) {
@@ -29,8 +29,8 @@ let isDirectory = (path) => {
 };
 
 // Function: Copy files recursive
-let copyFile = (path_src, path_dst) => {
-  ncp(path_src, path_dst, (err) => {
+var copyFile = function(path_src, path_dst) {
+  ncp(path_src, path_dst, function(err) {
     if (err) {
       console.error(err);
       process.exit(1);
@@ -39,33 +39,33 @@ let copyFile = (path_src, path_dst) => {
 };
 
 // Read 'package.json'
-fs.readFile('package.json', { 'encoding': 'utf8' }, (err, data) => {
+fs.readFile('package.json', { 'encoding': 'utf8' }, function(err, data) {
   // Exit: If occurs read error
   if (err) {
     console.error(err);
     process.exit(1);
   }
 
-  let package_json = JSON.parse(data);
+  var package_json = JSON.parse(data);
 
   // Exit: If failure to parse 'package.json'
   if (!package_json) {
-    console.error("Failure to parse 'package.json'");
+    console.error('Failure to parse \'package.json\'');
     process.exit(1);
   }
   // Exit: If 'name' node does not changed from 'unity-package-template'
   if ('__PACKAGE_NAME__' == package_json.name) {
-    console.error("You must change 'name' node in 'package.json'");
+    console.error('You must change \'name\' node in \'package.json\'');
     process.exit(1);
   }
   // Exit: If 'files' node does not exists or empty
   if (!package_json.files || 0 == package_json.files.length) {
-    console.error("'files' node does not exists or empty in 'package.json'");
+    console.error('\'files\' node does not exists or empty in \'package.json\'');
     process.exit(1);
   }
 
   // Each 'files' node entry
-  package_json.files.forEach((file) => {
+  package_json.files.forEach(function(file) {
     if (/^(scripts|src)$/.test(file)) {
       return;
     }
@@ -73,14 +73,14 @@ fs.readFile('package.json', { 'encoding': 'utf8' }, (err, data) => {
     var dst = path.join(dst_base, file);
     // Exit: If source file does not exists
     if (!isExists(src)) {
-      console.error(`Source file does not found: [${src}]`);
+      console.error('Source file does not found: [' + src + ']');
       process.exit(1);
     }
 
     // Copy file
     // Create directory if needed
     if (isDirectory(src) && !isExists(dst)) {
-      mkdirp(dst, (err) => {
+      mkdirp(dst, function(err) {
         // Exit: If failure to create directory
         if (err) {
           console.error(err);
@@ -90,7 +90,7 @@ fs.readFile('package.json', { 'encoding': 'utf8' }, (err, data) => {
         copyFile(src, dst);
       });
     } else if (!isExists(path.dirname(dst))) {
-      mkdirp(path.dirname(dst), (err) => {
+      mkdirp(path.dirname(dst), function(err) {
         // Exit: If failure to create parent directory
         if (err) {
           console.error(err);

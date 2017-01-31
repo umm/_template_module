@@ -1,7 +1,7 @@
-import path from 'path';
-import rmdir from 'rmdir';
-import fs from 'fs';
-import readlineSync from 'readline-sync';
+var path = require('path');
+var rmdir = require('rmdir');
+var fs = require('fs');
+var readlineSync = require('readline-sync');
 
 var v = {
   package_name: '',
@@ -21,10 +21,10 @@ var v = {
   license: process.env.npm_config_license || 'MIT'
 };
 
-var f_read_input = (message, original, required) => {
+var f_read_input = function(message, original, required) {
   var result = original;
   do {
-    input = readlineSync.question(`${message} ` + (original ? `[${original}] ` : ''));
+    input = readlineSync.question(message + ' ' + (original ? '[' + original + '] ' : ''));
     if (input) {
       result = input;
     }
@@ -32,10 +32,10 @@ var f_read_input = (message, original, required) => {
   return result;
 };
 
-var f_configure = (shortly) => {
+var f_configure = function(shortly) {
   v.package_name = f_read_input('What is package name?', v.package_name, true);
   if (!/^unity-package-/.test(v.package_name)) {
-    v.package_name = `unity-package-${v.package_name}`;
+    v.package_name = 'unity-package-' + v.package_name;
   }
   v.description = f_read_input('Please input description if needed.', v.description, false);
   if (!shortly) {
@@ -46,7 +46,7 @@ var f_configure = (shortly) => {
     v.repository.name = v.repository.name.replace(/^unity-package-/, '');
   }
   if ('git' == v.repository.type && !/.git$/.test(v.repository.name)) {
-    v.repository.name = `${v.repository.name}.git`;
+    v.repository.name = v.repository.name + '.git';
   }
   v.repository.name = f_read_input('What is repository name?', v.repository.name || v.package_name, true);
   if (!shortly) {
@@ -69,7 +69,7 @@ var f_configure = (shortly) => {
   }
 };
 
-var f_replace_placeholder = (data) => {
+var f_replace_placeholder = function(data) {
   data = data.replace(/__PACKAGE_NAME__/g, v.package_name);
   data = data.replace(/__DESCRIPTION__/g, v.description);
   data = data.replace(/__REPOSITORY_NAME__/g, v.repository.name);
@@ -84,8 +84,8 @@ var f_replace_placeholder = (data) => {
   return data;
 };
 
-var f_write_package_json = () => {
-  fs.readFile('package.json', { encoding: 'utf8' }, (err, data) => {
+var f_write_package_json = function() {
+  fs.readFile('package.json', { encoding: 'utf8' }, function(err, data) {
     if (err) {
       console.error(err);
       process.exit(1);
@@ -93,23 +93,23 @@ var f_write_package_json = () => {
 
     data = f_replace_placeholder(data);
 
-    fs.writeFile('package.json', data, { encoding: 'utf8' }, () => {
-      console.log('Finish wrote `package.json\'.');
+    fs.writeFile('package.json', data, { encoding: 'utf8' }, function() {
+      console.log('Finish wrote \'package.json\'.');
       f_change_remote_repository();
     });
   });
 };
 
-var f_change_remote_repository = () => {
+var f_change_remote_repository = function() {
   if ('git' == v.repository.type) {
-    rmdir('.git', () => {
-      console.log("Finish remove original '.git/' directory.");
-      require('child_process').exec(`git init && git add . && git commit -m "Initial commit" && git remote add origin ${v.repository.user}@${v.repository.host}:${v.repository.group}/${v.repository.name}`, (err, stdout, stderr) => {
+    rmdir('.git', function() {
+      console.log('Finish remove original \'.git/\' directory.');
+      require('child_process').exec('git init && git add . && git commit -m "Initial commit" && git remote add origin ' + v.repository.user + '@' + v.repository.host + ':' + v.repository.group + '/' + v.repository.name, function(err, stdout, stderr) {
         if (err) {
           console.error(err);
           process.exit(1);
         }
-        console.log("Finish reset repository.");
+        console.log('Finish reset repository.');
       });
     });
   }

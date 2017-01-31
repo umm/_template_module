@@ -7,9 +7,9 @@
     "url": "https://__REPOSITORY_HOST__/__REPOSITORY_GROUP__/__REPOSITORY_NAME__/issues"
   },
   "scripts": {
-    "initpackage": "node -r babel-register scripts/initpackage.js",
-    "prepublish": "in-publish && node -r babel-register scripts/prepublish.js || not-in-publish",
-    "postinstall": "node -r babel-register scripts/postinstall.js"
+    "initpackage": "node scripts/initpackage.js",
+    "prepublish": "in-publish && node scripts/prepublish.js || not-in-publish",
+    "postinstall": "node scripts/postinstall.js"
   },
   "author": {
     "name": "__AUTHOR_NAME__",
@@ -31,9 +31,5 @@
     "ncp": "^2.0.0",
     "mkdirp": "^0.5.1",
     "rmdir": "^1.2.0"
-  },
-  "devDependencies": {
-    "babel-preset-latest": "^6.22.0",
-    "babel-register": "^6.22.0"
   }
 }
