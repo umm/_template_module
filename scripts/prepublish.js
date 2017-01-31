@@ -4,7 +4,7 @@ import mkdirp from 'mkdirp';
 import fs from 'fs';
 
 // Paths
-let src_base = path.join(__dirname, '..', '..', '..', 'Assets', 'Packages');
+let src_base = path.join(__dirname, '..', 'test', 'Assets', 'Packages');
 let dst_base = path.join(__dirname, '..', 'src');
 
 // Function: Check file or directory exists
