@@ -104,7 +104,7 @@ var f_change_remote_repository = function() {
   if ('git' == v.repository.type) {
     rmdir('.git', function() {
       console.log('Finish remove original \'.git/\' directory.');
-      require('child_process').exec('git init && git add . && git commit -m "Initial commit" && git remote add origin ' + v.repository.user + '@' + v.repository.host + ':' + v.repository.group + '/' + v.repository.name, function(err, stdout, stderr) {
+      require('child_process').exec('echo \'\' > README.md && git init && git add . && git commit -m "Initial commit" && git remote add origin ' + v.repository.user + '@' + v.repository.host + ':' + v.repository.group + '/' + v.repository.name, function(err, stdout, stderr) {
         if (err) {
           console.error(err);
           process.exit(1);
