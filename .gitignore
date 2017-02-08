@@ -11,8 +11,8 @@
 /test/[Oo]bj/
 /test/[Bb]uild/
 /test/ProjectSettings/ProjectVersion.txt
-/test/Assets/Package/
-/test/Assets/Package.meta
+/test/Assets/Packages/
+/test/Assets/Packages.meta
 /test/node_modules/
 /test/EditorTestResults.xml
 /node_modules/
