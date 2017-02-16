@@ -11,6 +11,7 @@
     "gulp": "^3.9.1",
     "gulp-unity": "github:shadowmint/gulp-unity#1.0.0",
     "run-sequence": "^1.2.2",
+    "unity-package-unity3drider": "^1.0.1",
     "xml2js": "^0.4.17"
   }
 }
