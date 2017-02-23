@@ -4,7 +4,7 @@ var fs = require('fs');
 var readlineSync = require('readline-sync');
 
 var v = {
-  package_name: '',
+  package_name: path.basename(process.cwd()) || '',
   description: '',
   repository: {
     type: 'git',
