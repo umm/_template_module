@@ -26,13 +26,14 @@
     "src"
   ],
   "dependencies": {
-    "in-publish": "^2.0.0",
-    "readline-sync": "^1.4.5",
     "ncp": "^2.0.0",
-    "mkdirp": "^0.5.1",
-    "rmdir": "^1.2.0"
+    "mkdirp": "^0.5.1"
   },
   "devDependencies": {
+    "in-publish": "^2.0.0",
+    "readline-sync": "^1.4.5",
+    "rmdir": "^1.2.0",
+    "unity-package-unity3drider": "^1.0.3",
     "version-up": "^1.0.0"
   }
 }
