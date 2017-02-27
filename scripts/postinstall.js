@@ -4,7 +4,13 @@ var ncp = require('ncp');
 
 // Paths
 var src = path.join(__dirname, '..', 'src');
-var dir = path.join(__dirname, '..', '..', '..', 'Assets', 'Packages');
+if ('node_modules' == path.basename(path.dirname(process.cwd()))) {
+  // Normal installation
+  var dir = path.join(__dirname, '..', '..', '..', 'Assets', 'Packages');
+} else {
+  // Development installation
+  var dir = path.join(__dirname, '..', 'Assets');
+}
 
 // Create folder if missing
 mkdirp(dir, function(err) {

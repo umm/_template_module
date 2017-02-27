@@ -4,7 +4,7 @@ var mkdirp = require('mkdirp');
 var fs = require('fs');
 
 // Paths
-var src_base = path.join(__dirname, '..', 'Assets', 'Packages');
+var src_base = path.join(__dirname, '..', 'Assets');
 var dst_base = path.join(__dirname, '..', 'src');
 
 // Function: Check file or directory exists
