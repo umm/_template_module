@@ -31,10 +31,17 @@
     "mkdirp": "^0.5.1"
   },
   "devDependencies": {
+    "babel-polyfill": "^6.22.0",
+    "babel-preset-latest": "^6.22.0",
+    "babel-register": "^6.22.0",
+    "gulp": "^3.9.1",
+    "gulp-unity": "github:shadowmint/gulp-unity#1.0.0",
     "in-publish": "^2.0.0",
     "readline-sync": "^1.4.5",
     "rmdir": "^1.2.0",
+    "run-sequence": "^1.2.2",
     "unity-package-unity3drider": "^1.0.3",
-    "version-up": "^1.0.0"
+    "version-up": "^1.0.0",
+    "xml2js": "^0.4.17"
   }
 }
