@@ -1,11 +1,8 @@
 # Created by https://www.gitignore.io
 
 ### Unity ###
-/src/*/[Ll]ibrary/
-/src/*/[Tt]emp/
-/src/*/[Oo]bj/
-/src/*/[Bb]uild/
-/src/*/ProjectSettings/ProjectVersion.txt
+/.unitypath
+/src/
 /test/[Ll]ibrary/
 /test/[Tt]emp/
 /test/[Oo]bj/
@@ -20,7 +17,8 @@
 /[Oo]bj/
 /[Bb]uild/
 /ProjectSettings/
-/Assets/
+/Assets/Packages/
+/Assets/Packages.meta
 /node_modules/
 /EditorTestResults.xml
 
