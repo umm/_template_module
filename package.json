@@ -7,9 +7,6 @@
     "url": "https://__REPOSITORY_HOST__/__REPOSITORY_GROUP__/__REPOSITORY_NAME__/issues"
   },
   "scripts": {
-    "copyself": "node scripts/copyself.js",
-    "initpackage": "node scripts/initpackage.js",
-    "prepublishOnly": "node scripts/prepublish.js",
     "postinstall": "node scripts/postinstall.js",
     "build:test": "tar -tf $(npm pack -s) && $(npm bin)/rimraf $_"
   },
