@@ -9,8 +9,9 @@
   "scripts": {
     "copyself": "node scripts/copyself.js",
     "initpackage": "node scripts/initpackage.js",
-    "prepublish": "in-publish && node scripts/prepublish.js || not-in-publish",
-    "postinstall": "node scripts/postinstall.js"
+    "prepublishOnly": "node scripts/prepublish.js",
+    "postinstall": "node scripts/postinstall.js",
+    "build:test": "tar -tf $(npm pack -s) && $(npm bin)/rimraf $_"
   },
   "author": {
     "name": "__AUTHOR_NAME__",
@@ -27,7 +28,8 @@
   ],
   "dependencies": {
     "mkdirp": "^0.5.1",
-    "ncp": "^2.0.0"
+    "ncp": "^2.0.0",
+    "rimraf": "^2.6.1"
   },
   "devDependencies": {
     "babel-polyfill": "^6.22.0",
