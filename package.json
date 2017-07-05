@@ -28,15 +28,5 @@
     "ncp": "^2.0.0",
     "rimraf": "^2.6.1"
   },
-  "devDependencies": {
-    "babel-polyfill": "^6.22.0",
-    "babel-preset-latest": "^6.22.0",
-    "babel-register": "^6.22.0",
-    "gulp": "^3.9.1",
-    "gulp-unity": "github:shadowmint/gulp-unity#1.0.0",
-    "readline-sync": "^1.4.5",
-    "rmdir": "^1.2.0",
-    "run-sequence": "^1.2.2",
-    "xml2js": "^0.4.17"
-  }
+  "devDependencies": {}
 }
