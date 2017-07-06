@@ -1,2 +1,5 @@
+.npmignore
 Modules/
 Modules.meta
+Tests/
+Tests.meta
