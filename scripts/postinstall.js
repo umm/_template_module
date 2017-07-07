@@ -22,7 +22,7 @@ var destination = path.resolve(script_directory, (has_scope ? '../' : '') + '../
 // 宛先ディレクトリを作る (mkdir -p)
 mkdirp(destination, function(err) {
   if (err) {
-    console.error(err)
+    console.error(err);
     process.exit(1);
   }
 
