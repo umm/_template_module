@@ -27,6 +27,7 @@
   "dependencies": {
     "mkdirp": "^0.5.1",
     "ncp": "^2.0.0",
+    "pascal-case": "^2.0.1",
     "rimraf": "^2.6.1"
   },
   "devDependencies": {}
