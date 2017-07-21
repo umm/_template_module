@@ -39,7 +39,7 @@ mkdirp(destination, function(err) {
   rsync
     .flags('az')
     .delete()
-    .source(source)
+    .source(source + '/')
     .destination(destination)
     .execute(function(err, code, command) {
       if (err) {
