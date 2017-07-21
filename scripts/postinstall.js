@@ -1,7 +1,6 @@
 var mkdirp = require('mkdirp');
 var path = require('path');
 var ncp = require('ncp');
-var pascalCase = require('pascal-case');
 var package = require('../package.json');
 
 var script_directory = __dirname;
@@ -26,11 +25,11 @@ if (/^@/.test(package.name)) {
   destination += '/' + package.name.replace(
     /^@([^\/]+)\/(.*)$/,
     function(match, namespace, package_name) {
-      return namespace + '@' + pascalCase(package_name);
+      return namespace + '@' + package_name;
     }
   );
 } else {
-  destination += '/' + pascalCase(package.name);
+  destination += '/' + package.name;
 }
 
 // 宛先ディレクトリを作る (mkdir -p)
