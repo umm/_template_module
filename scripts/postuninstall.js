@@ -1,3 +1,4 @@
+var fs = require('fs');
 var mkdirp = require('mkdirp');
 var path = require('path');
 var rimraf = require('rimraf');
@@ -28,4 +29,12 @@ if (/^@/.test(package.name)) {
 }
 
 // 配置先ディレクトリを全削除
-rimraf(destination);
+fs.access(
+  destination,
+  function(err) {
+    if (err.code == 'ENOENT') {
+      return;
+    }
+    rimraf(destination);
+  }
+);
