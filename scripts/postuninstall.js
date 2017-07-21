@@ -35,6 +35,11 @@ fs.access(
     if (err && err.code == 'ENOENT') {
       return;
     }
-    rimraf(destination);
+    rimraf(
+      destination,
+      function(_) {
+        // Do nothing.
+      }
+    );
   }
 );
