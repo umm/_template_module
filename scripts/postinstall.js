@@ -4,12 +4,8 @@ var ncp = require('ncp');
 var package = require('../package.json');
 
 var script_directory = __dirname;
-var has_scope = false;
-if (/^@/.test(path.basename(path.resolve(script_directory, '../../')))) {
-  // 二つ親のディレクトリが @ で始まる場合は Scoped なパッケージと見なす
-  // XXX: package.json の中身を読むとヨサソウ
-  has_scope = true;
-}
+// パッケージ名が @ で始まるならスコープ有りと見なす
+var has_scope = /^@/.test(package.name);
 
 if ('node_modules' != path.basename(path.resolve(script_directory, (has_scope ? '../' : '') + '../../'))) {
   // 開発インストールの場合無視する
