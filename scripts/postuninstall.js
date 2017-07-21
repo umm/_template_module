@@ -32,7 +32,7 @@ if (/^@/.test(package.name)) {
 fs.access(
   destination,
   function(err) {
-    if (err.code == 'ENOENT') {
+    if (err && err.code == 'ENOENT') {
       return;
     }
     rimraf(destination);
