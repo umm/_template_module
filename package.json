@@ -8,6 +8,7 @@
   },
   "scripts": {
     "postinstall": "node scripts/postinstall.js",
+    "postuninstall": "node scripts/postuninstall.js",
     "build:test": "tar -tf $(npm pack -s) && $(npm bin)/rimraf $_"
   },
   "author": {
