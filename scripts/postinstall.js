@@ -1,7 +1,7 @@
 var mkdirp = require('mkdirp');
 var path = require('path');
-var ncp = require('ncp');
 var package = require('../package.json');
+var rsync = new (require('rsync'))();
 
 var script_directory = __dirname;
 // パッケージ名が @ で始まるならスコープ有りと見なす
@@ -35,12 +35,16 @@ mkdirp(destination, function(err) {
     process.exit(1);
   }
 
-  // ファイルを再帰的にコピーする
-  // NOTE: ココは rsync --delete とかにするかも
-  ncp(source, destination, function(err) {
-    if (err) {
-      console.error(err);
-      process.exit(1);
-    }
-  });
+  // rsync を用いてファイルを再帰的にコピーする
+  rsync
+    .flags('az')
+    .delete()
+    .source(source)
+    .destination(destination)
+    .execute(function(err, code, command) {
+      if (err) {
+        console.error(err);
+        process.exit(1);
+      }
+    });
 });
