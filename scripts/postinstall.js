@@ -15,7 +15,7 @@ if ('node_modules' != path.basename(path.resolve(script_directory, (has_scope ? 
 // スクリプトの存在するディレクトリから見たパス
 var source = path.resolve(script_directory, '../Assets');
 var destination = path.resolve(script_directory, (has_scope ? '../' : '') + '../../../Assets/Modules');
-// パッケージ名を PascalCase にして付与
+// パッケージ名をそのまま付与
 //   (ネームスペースを持つ場合、そのまま namespace + @ をプレフィックスにする)
 if (/^@/.test(package.name)) {
   destination += '/' + package.name.replace(
