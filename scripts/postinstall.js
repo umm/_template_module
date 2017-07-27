@@ -1,7 +1,7 @@
 var mkdirp = require('mkdirp');
 var path = require('path');
 var package = require('../package.json');
-var rsync = new (require('rsync'))();
+var ncp = require('ncp').ncp;
 
 var script_directory = __dirname;
 // パッケージ名が @ で始まるならスコープ有りと見なす
@@ -12,21 +12,23 @@ if ('node_modules' != path.basename(path.resolve(script_directory, (has_scope ? 
   return;
 }
 
-// スクリプトの存在するディレクトリから見たパス
-var source = path.resolve(script_directory, '../Assets');
-var destination = path.resolve(script_directory, (has_scope ? '../' : '') + '../../../Assets/Modules');
-// パッケージ名をそのまま付与
+// パッケージ名を決定
 //   (ネームスペースを持つ場合、そのまま namespace + @ をプレフィックスにする)
+var package_name = '';
 if (/^@/.test(package.name)) {
-  destination += '/' + package.name.replace(
+  package_name = package.name.replace(
     /^@([^\/]+)\/(.*)$/,
-    function(match, namespace, package_name) {
-      return namespace + '@' + package_name;
+    function(match, namespace, name) {
+      return namespace + '@' + name;
     }
   );
 } else {
-  destination += '/' + package.name;
+  package_name = package.name;
 }
+
+// スクリプトの存在するディレクトリから見たパス
+var source = path.resolve(script_directory, '../Assets');
+var destination = path.resolve(script_directory, (has_scope ? '../' : '') + '../../../Assets/Modules/' + package_name);
 
 // 宛先ディレクトリを作る (mkdir -p)
 mkdirp(destination, function(err) {
@@ -35,16 +37,14 @@ mkdirp(destination, function(err) {
     process.exit(1);
   }
 
-  // rsync を用いてファイルを再帰的にコピーする
-  rsync
-    .flags('az')
-    .delete()
-    .source(source + '/')
-    .destination(destination)
-    .execute(function(err, code, command) {
+  ncp(
+    source,
+    destination,
+    function(err) {
       if (err) {
         console.error(err);
         process.exit(1);
       }
-    });
+    }
+  );
 });
