@@ -8,12 +8,12 @@
 
 # Requirement
 
-* Unity 2017.1
+* 
 
 # Install
 
 ```shell
-$ npm install github:umm-projects/__REPOSITORY_NAME__
+$ npm install __REPOSITORY_SITE__:__REPOSITORY_GROUP__/__REPOSITORY_NAME__
 ```
 
 # Usage
@@ -22,7 +22,7 @@ $ npm install github:umm-projects/__REPOSITORY_NAME__
 
 # License
 
-Copyright (c) __COPYRIGHT_YEAR__ __AUTHOR_NAME__
+Copyright (c) __COPYRIGHT_YEAR__ __COPYRIGHT_NAME__
 
-Released under the MIT license, see [LICENSE.txt](LICENSE.txt)
+Released under the __LICENSE__ license, see [LICENSE.txt](LICENSE.txt)
 
