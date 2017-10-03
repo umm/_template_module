@@ -7,15 +7,13 @@
     "url": "https://__REPOSITORY_HOST__/__REPOSITORY_GROUP__/__REPOSITORY_NAME__/issues"
   },
   "scripts": {
+    "umm:init": "./scripts/umm/init",
+    "umm:clean": "./scripts/umm/clean",
     "postinstall": "node scripts/postinstall.js",
     "postuninstall": "node scripts/postuninstall.js",
     "build:test": "tar -tf $(npm pack -s) && $(npm bin)/rimraf $_"
   },
-  "author": {
-    "name": "__AUTHOR_NAME__",
-    "email": "__AUTHOR_EMAIL__",
-    "url": "__AUTHOR_URL__"
-  },
+  "author": "__AUTHOR_NAME__",
   "license": "__LICENSE__",
   "repository": {
     "type": "__REPOSITORY_TYPE__",
