@@ -22,7 +22,7 @@ var loadUMMConfig = (callback) => {
     return;
   }
   if (!process.argv[2].match(/@/)) {
-    console.warning('Recommend you to create as scoped package');
+    console.warn('Recommend you to create as scoped package');
   }
 
   fs.access(
