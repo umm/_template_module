@@ -1,13 +1,13 @@
 var mkdirp = require('mkdirp');
 var path = require('path');
-var package = require('../package.json');
+var package = require('../../package.json');
 var ncp = require('ncp').ncp;
 
 var script_directory = __dirname;
 // パッケージ名が @ で始まるならスコープ有りと見なす
 var has_scope = /^@/.test(package.name);
 
-if ('node_modules' != path.basename(path.resolve(script_directory, (has_scope ? '../' : '') + '../../'))) {
+if ('node_modules' != path.basename(path.resolve(script_directory, (has_scope ? '../' : '') + '../../../'))) {
   // 開発インストールの場合無視する
   return;
 }
@@ -27,8 +27,8 @@ if (/^@/.test(package.name)) {
 }
 
 // スクリプトの存在するディレクトリから見たパス
-var source = path.resolve(script_directory, '../Assets');
-var destination = path.resolve(script_directory, (has_scope ? '../' : '') + '../../../Assets/Modules/' + package_name);
+var source = path.resolve(script_directory, '../../Assets');
+var destination = path.resolve(script_directory, (has_scope ? '../' : '') + '../../../../Assets/Modules/' + package_name);
 
 // 宛先ディレクトリを作る (mkdir -p)
 mkdirp(destination, function(err) {
