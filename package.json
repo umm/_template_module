@@ -7,10 +7,12 @@
     "url": "https://__REPOSITORY_HOST__/__REPOSITORY_GROUP__/__REPOSITORY_NAME__/issues"
   },
   "scripts": {
-    "umm:init": "./scripts/umm/init",
-    "umm:clean": "./scripts/umm/clean",
-    "postinstall": "node scripts/postinstall.js",
-    "postuninstall": "node scripts/postuninstall.js",
+    "umm:init": "node ./scripts/umm/init.js",
+    "umm:clean": "node ./scripts/umm/clean.js",
+    "umm:install": "node ./scripts/umm/install.js",
+    "umm:uninstall": "node ./scripts/umm/uninstall.js",
+    "postinstall": "npm run umm:install",
+    "postuninstall": "npm run umm:uninstall",
     "build:test": "tar -tf $(npm pack -s) && $(npm bin)/rimraf $_"
   },
   "author": "__AUTHOR_NAME__",
