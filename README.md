@@ -1,26 +1,24 @@
-# What
+# __REPOSITORY_NAME__
+
+## What
 
 * 
 
-# Why
+## Requirement
 
 * 
 
-# Requirement
-
-* 
-
-# Install
+## Install
 
 ```shell
 $ npm install __REPOSITORY_SITE__:__REPOSITORY_GROUP__/__REPOSITORY_NAME__
 ```
 
-# Usage
+## Usage
 
 * 
 
-# License
+## License
 
 Copyright (c) __COPYRIGHT_YEAR__ __COPYRIGHT_NAME__
 
