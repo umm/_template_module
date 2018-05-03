@@ -7,12 +7,11 @@
     "url": "https://__REPOSITORY_HOST__/__REPOSITORY_GROUP__/__REPOSITORY_NAME__/issues"
   },
   "scripts": {
-    "umm:init": "node ./scripts/umm/init.js",
-    "umm:clean": "node ./scripts/umm/clean.js",
-    "umm:install": "node ./scripts/umm/install.js",
-    "umm:uninstall": "node ./scripts/umm/uninstall.js",
-    "postinstall": "npm run umm:install",
-    "postuninstall": "npm run umm:uninstall",
+    "umm:init": "$(npm bin)/umm-init",
+    "umm:install": "$(npm bin)/umm-install",
+    "umm:uninstall": "$(npm bin)/umm-uninstall",
+    "postinstall": "npm run --silent umm:install",
+    "postuninstall": "npm run --silent umm:uninstall",
     "build:test": "tar -tf $(npm pack -s) && $(npm bin)/rimraf $_"
   },
   "author": "__AUTHOR_NAME__",
@@ -26,10 +25,7 @@
     "scripts"
   ],
   "dependencies": {
-    "glob": "^7.1.2",
-    "mkdirp": "^0.5.1",
-    "ncp": "^2.0.0",
-    "rimraf": "^2.6.1"
+    "@umm/scripts": "umm-projects/scripts#^1.0.0"
   },
   "devDependencies": {}
 }
