@@ -11,7 +11,7 @@
 ## Install
 
 ```shell
-$ npm install __REPOSITORY_SITE__:__REPOSITORY_GROUP__/__REPOSITORY_NAME__
+yarn add "__REPOSITORY_GROUP__/__REPOSITORY_NAME__#^1.0.0"
 ```
 
 ## Usage
