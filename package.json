@@ -1,18 +1,18 @@
 {
   "name": "__PACKAGE_NAME__",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "__DESCRIPTION__",
   "homepage": "https://__REPOSITORY_HOST__/__REPOSITORY_GROUP__/__REPOSITORY_NAME__",
   "bugs": {
     "url": "https://__REPOSITORY_HOST__/__REPOSITORY_GROUP__/__REPOSITORY_NAME__/issues"
   },
   "scripts": {
-    "umm:init": "$(npm bin)/umm-init",
-    "umm:install": "$(npm bin)/umm-install",
-    "umm:uninstall": "$(npm bin)/umm-uninstall",
-    "postinstall": "npm run --silent umm:install",
-    "postuninstall": "npm run --silent umm:uninstall",
-    "build:test": "tar -tf $(npm pack -s) && $(npm bin)/rimraf $_"
+    "umm:init": "umm-init",
+    "umm:generate_assembly_definition": "umm-generate_assembly_definition",
+    "umm:module:install": "umm-install",
+    "umm:module:uninstall": "umm-uninstall",
+    "postinstall": "npm run --silent umm:module:install",
+    "postuninstall": "npm run --silent umm:module:uninstall"
   },
   "author": "__AUTHOR_NAME__",
   "license": "__LICENSE__",
@@ -21,8 +21,7 @@
     "url": "__REPOSITORY_USER__@__REPOSITORY_HOST__:__REPOSITORY_GROUP__/__REPOSITORY_NAME__"
   },
   "files": [
-    "Assets",
-    "scripts"
+    "Assets"
   ],
   "dependencies": {
     "@umm/scripts": "umm-projects/scripts#^1.0.0"
